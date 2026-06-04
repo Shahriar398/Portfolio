@@ -80,6 +80,24 @@ h2{
     border-radius:10px;
 }
 
+.project-btn{
+    display:inline-block;
+    margin-top:15px;
+    margin-right:8px;
+    text-decoration:none;
+    background:#1e3a8a;
+    color:white;
+    padding:8px 15px;
+    border-radius:20px;
+    font-size:14px;
+    transition:.4s;
+}
+
+.project-btn:hover{
+    background:#2563eb;
+    transform:translateY(-3px);
+}
+
 .contact{
     text-align:center;
 }
