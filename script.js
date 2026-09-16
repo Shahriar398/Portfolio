@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ---------- Contact form → shahriarh398@gmail.com (FormSubmit) ----------
+  // ---------- Contact form → Formspree (endpoint is the form action in index.html) ----------
   if (form) {
     const submitButton = form.querySelector('button[type="submit"]');
 
@@ -190,35 +190,21 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       status.textContent = "Sending your message…";
 
-      const replyto = document.getElementById("replyto");
-      if (replyto) {
-        replyto.value = email;
-      }
-
-      const payload = new FormData(form);
-      payload.set("_subject", "Portfolio: " + subject);
-      payload.set("_replyto", email);
-
-      fetch("https://formsubmit.co/ajax/shahriarh398@gmail.com", {
+      fetch(form.action, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: payload
+        body: new FormData(form)
       })
         .then(function (response) {
-          return response.json().then(function (data) {
-            return { ok: response.ok, data: data };
-          });
-        })
-        .then(function (result) {
-          if (!result.ok) {
+          if (!response.ok) {
             throw new Error("Send failed");
           }
-          status.textContent = "Thank you! Your message has been sent.";
+          status.textContent = "Message sent successfully! I’ll get back to you soon.";
           form.reset();
         })
         .catch(function () {
           status.classList.add("is-error");
-          status.textContent = "Sorry, the message could not be sent. Please email shahriarh398@gmail.com directly.";
+          status.textContent = "Something went wrong. Please try again.";
         })
         .finally(function () {
           if (submitButton) {
