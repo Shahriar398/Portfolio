@@ -8,6 +8,12 @@ The website is designed to provide a simple and interactive overview of my journ
 
 ---
 
+
+## 🌐 Live Portfolio
+
+🔗 **[Visit My Portfolio](https://shahriar398.github.io/Portfolio/)**
+
+---
 ## 👨‍💻 About Me
 
 Hi, I'm **Shahriar Hasan**, a Computer Science and Engineering student at **American International University-Bangladesh (AIUB)**.
