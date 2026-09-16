@@ -517,6 +517,33 @@ button, input, textarea {
 }
 
 /* ---------- Education ---------- */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.edu-simple {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.6rem 1.2rem;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+}
+
+.edu-simple h3 {
+  color: var(--blue-700);
+  font-size: 1.05rem;
+  margin-bottom: 0.7rem;
+}
+
+.edu-simple p {
+  color: var(--gray-700);
+  margin-bottom: 0.2rem;
+}
+
 .edu-card {
   position: relative;
   background: var(--white);
@@ -619,8 +646,24 @@ button, input, textarea {
 /* ---------- Projects ---------- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.4rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.project-simple .project-body {
+  text-align: center;
+  padding: 1.5rem 1.2rem 1.4rem;
+}
+
+.project-simple h3 {
+  color: var(--blue-700);
+  font-size: 1.08rem;
+  margin-bottom: 0.65rem;
+}
+
+.project-simple .btn {
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .project-card {
@@ -679,6 +722,7 @@ button, input, textarea {
 .fallback-robot { background: linear-gradient(160deg, #1e3a4c, #123047); }
 .fallback-security { background: linear-gradient(160deg, #1b2d4a, #0f1b30); }
 .fallback-java { background: linear-gradient(160deg, #2a3344, #151b27); }
+.fallback-game { background: linear-gradient(160deg, #1a3554, #0c1a2e); }
 
 .project-body {
   padding: 1.25rem 1.3rem 1.4rem;
@@ -1091,7 +1135,9 @@ button, input, textarea {
   }
 
   .skills-grid,
-  .interest-grid {
+  .interest-grid,
+  .edu-grid,
+  .projects-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1132,7 +1178,8 @@ button, input, textarea {
   .experience-grid,
   .other-research-grid,
   .skills-grid,
-  .interest-grid {
+  .interest-grid,
+  .edu-grid {
     grid-template-columns: 1fr;
   }
 

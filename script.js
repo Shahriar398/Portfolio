@@ -190,6 +190,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       status.textContent = "Sending your message…";
 
+      const replyto = document.getElementById("replyto");
+      if (replyto) {
+        replyto.value = email;
+      }
+
       const payload = new FormData(form);
       payload.set("_subject", "Portfolio: " + subject);
       payload.set("_replyto", email);
