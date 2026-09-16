@@ -165,8 +165,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ---------- Contact form (front-end only) ----------
+  // ---------- Contact form → shahriarh398@gmail.com (FormSubmit) ----------
   if (form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+
     form.addEventListener("submit", function (event) {
       event.preventDefault();
 
@@ -175,13 +177,49 @@ document.addEventListener("DOMContentLoaded", function () {
       const subject = form.elements.subject.value.trim();
       const message = form.elements.message.value.trim();
 
+      status.classList.remove("is-error");
+
       if (!name || !email || !subject || !message) {
+        status.classList.add("is-error");
         status.textContent = "Please fill in all fields before submitting.";
         return;
       }
 
-      status.textContent = "Thank you! Your message form is ready to be connected to a backend.";
-      form.reset();
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+      status.textContent = "Sending your message…";
+
+      const payload = new FormData(form);
+      payload.set("_subject", "Portfolio: " + subject);
+      payload.set("_replyto", email);
+
+      fetch("https://formsubmit.co/ajax/shahriarh398@gmail.com", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: payload
+      })
+        .then(function (response) {
+          return response.json().then(function (data) {
+            return { ok: response.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (!result.ok) {
+            throw new Error("Send failed");
+          }
+          status.textContent = "Thank you! Your message has been sent.";
+          form.reset();
+        })
+        .catch(function () {
+          status.classList.add("is-error");
+          status.textContent = "Sorry, the message could not be sent. Please email shahriarh398@gmail.com directly.";
+        })
+        .finally(function () {
+          if (submitButton) {
+            submitButton.disabled = false;
+          }
+        });
     });
   }
 });

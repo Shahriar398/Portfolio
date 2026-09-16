@@ -977,6 +977,24 @@ button, input, textarea {
   min-height: 1.3em;
 }
 
+.form-status.is-error {
+  color: #b91c1c;
+}
+
+.honey-pot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-form .btn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+  transform: none;
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--navy-950);
